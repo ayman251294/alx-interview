@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""
-pascal triangle
+""" Pascal triangle
 """
 
+
 def pascal_triangle(n):
-    """
-    returns pascal triangle
+    """ returns pascal triangle
     """
     if n <= 0:
         return []
