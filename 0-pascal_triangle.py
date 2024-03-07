@@ -1,24 +1,33 @@
 #!/usr/bin/python3
 """
-    0-pascal_triangle.py: pascal_triangle()
+pascal triangle
 """
-
 
 def pascal_triangle(n):
     """
-        returns a lis of lists of integers
-        Args:
-            n (int): number of lists and digits
-        Returns: list of lists
+    returns pascal triangle
     """
-    t_row = [1]
-    temp_l = [0]
-    pTri = []
-
     if n <= 0:
-        return pTri
+        return []
+
+    pasTran = []
 
     for i in range(n):
-        pTri.append(t_row)
-        t_row = [l+r for l, r in zip(t_row + temp_l, temp_l + t_row)]
-    return pTri
+        # first element
+        my_List = [1]
+        if i == 0:
+            pasTran.append(my_List)
+            continue
+
+        k = i - 1
+        for j in range(len(pasTran[k])):
+            if j + 1 == len(pasTran[k]):
+                # last element
+                my_List.append(1)
+                break
+            # Add two previous values to get current next value
+            nextVal = pasTran[k][j] + pasTran[k][j + 1]
+            my_List.append(nextVal)
+        pasTran.append(my_List)
+
+    return pasTran
